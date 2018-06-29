@@ -1,13 +1,12 @@
 require 'rest-client'
 require 'sinatra'
 
-require_relative 'picture'
+require_relative 'gac'
 
-RANDOM_GAC_PICTURE = GovernmentArtCollectionRandomPicture.new.start
-
+PICTURE = GACPicture.new(GACRandomPicture.fetch)
+UPDATER = GACPictureUpdater.new(PICTURE, 30).start
 
 get '/' do
-  image_url = RANDOM_GAC_PICTURE.picture
-  # image_url = "http://www.gac.culture.gov.uk/gacdb/images/Large/13542.jpg"
+  image_url = PICTURE.url
   erb :index, locals: { image_url: image_url }
 end
