@@ -9,7 +9,7 @@ Thread.abort_on_exception = true
 module GACRandomPicture
   def self.fetch
     loop do
-      id = Random.rand(16000)
+      id = Random.rand(30000)
       url = "http://www.gac.culture.gov.uk/gacdb/search.php?mode=show&id=#{id}"
 
       puts "Trying: #{url}"
