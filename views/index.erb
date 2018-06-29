@@ -17,6 +17,17 @@
         align-content: center;
         height: 100%;
         background: #222;
+        font-family: Helvetica;
+        color: #ddd;
+      }
+      .title {
+        font-size: 2em;
+      }
+      .artist {
+        font-size: 1.25em;
+      }
+      .date {
+        font-size: 1em;
       }
     </style>
     <meta http-equiv="refresh" content="30"/>
@@ -24,6 +35,9 @@
   </head>
 
   <body>
-    <img id="pic" src="<%= image_url %>"/>
+    <a href="<%= picture.page_url %>"><img id="pic" src="<%= picture.image_url %>"/></a>
+    <div class="title"><%= picture.title %></div>
+    <div class="artist"><%= picture.artist %></div>
+    <div class="date"><%= picture.date %></div>
   </body>
 </html>
