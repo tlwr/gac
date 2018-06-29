@@ -4,6 +4,8 @@ require 'uri'
 
 Picture = Struct.new(:title, :artist, :date, :image_url, :page_url)
 
+LOG = Logger.new(STDOUT)
+
 Thread.abort_on_exception = true
 
 module GACRandomPicture
@@ -12,7 +14,7 @@ module GACRandomPicture
       id = Random.rand(30000)
       url = "http://www.gac.culture.gov.uk/gacdb/search.php?mode=show&id=#{id}"
 
-      puts "Trying: #{url}"
+      LOG.info "Trying: #{url}"
 
       begin
         html   = RestClient.get(url).body
@@ -25,7 +27,7 @@ module GACRandomPicture
         image_url = URI.join(url, larger_image_link['href'])
         RestClient.get(image_url.to_s)
 
-        puts "Success: #{url} | Found larger image link | Proceeding"
+        LOG.info "Success: #{url} | Found larger image link | Proceeding"
 
         artist = parsed.css('#detailsArtWork tr:nth-child(1) .cell2').text
         title  = parsed.css('#detailsArtWork tr:nth-child(2) .cell2').text
