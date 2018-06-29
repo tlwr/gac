@@ -1,0 +1,8 @@
+---
+applications:
+  - name: gac
+    buildpack: ruby_buildpack
+    memory:    64M
+    env:
+      RACK_ENV: production
+...
