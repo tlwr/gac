@@ -17,27 +17,38 @@
         align-content: center;
         height: 100%;
         background: #222;
-        font-family: Helvetica;
+        font-family: Helvetica Neue, sans-serif;
+        line-height: 1.2;
         color: #ddd;
       }
       .title {
-        font-size: 2em;
+        font-size: 6vw;
+        margin-bottom: 0px;
       }
-      .artist {
-        font-size: 1.25em;
+      .details {
+        font-size: 3vw;
       }
-      .date {
-        font-size: 1em;
+      
+     @media screen and (min-width: 768px) {
+       .title {
+        font-size: 2vw;
+        margin-bottom: 0px;
+        }
+        .details {
+          font-size: 1.2vw;
+        }
       }
+      
     </style>
+    
+    
     <meta http-equiv="refresh" content="30"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
     <a href="<%= picture.page_url %>"><img id="pic" src="<%= picture.image_url %>"/></a>
-    <div class="title"><%= picture.title %></div>
-    <div class="artist"><%= picture.artist %></div>
-    <div class="date"><%= picture.date %></div>
+    <h1 class="title"><%= picture.title %></h1>
+    <p class="details"><%= picture.artist %> | <%= picture.date %></p>
   </body>
 </html>
