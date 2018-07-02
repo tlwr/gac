@@ -48,7 +48,15 @@
 
   <body>
     <a href="<%= picture.page_url %>"><img id="pic" src="<%= picture.image_url %>"/></a>
-    <h1 class="title"><%= picture.title %></h1>
-    <p class="details"><%= picture.artist %> &vert; <%= picture.date %></p>
+    <h1 class="title">
+      <%= picture.title %>
+    </h1>
+    <p class="details">
+    <%= picture.artist %>
+      <% unless picture.date.chomp.length.zero? %>
+        &vert;
+        <%= picture.date %>
+      <% end %>
+    </p>
   </body>
 </html>
