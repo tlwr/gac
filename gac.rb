@@ -32,6 +32,7 @@ module GACRandomPicture
         artist = parsed.css('#detailsArtWork tr:nth-child(1) .cell2')
           .text
           .gsub(/\([^)]*\d{4}[^)]*\)/, '')
+          .gsub(/\(\)/, '')
           .chomp
 
         title = parsed
