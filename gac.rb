@@ -29,9 +29,19 @@ module GACRandomPicture
 
         LOG.info "Success: #{url} | Found larger image link | Proceeding"
 
-        artist = parsed.css('#detailsArtWork tr:nth-child(1) .cell2').text
-        title  = parsed.css('#detailsArtWork tr:nth-child(2) .cell2').text
-        date   = parsed.css('#detailsArtWork tr:nth-child(3) .cell2').text
+        artist = parsed.css('#detailsArtWork tr:nth-child(1) .cell2')
+          .text
+          .gsub(/\([^)]*\d{4}[^)]*\)/, '')
+          .chomp
+
+        title = parsed
+          .css('#detailsArtWork tr:nth-child(2) .cell2')
+          .text
+          .chomp
+
+        date = parsed.css('#detailsArtWork tr:nth-child(3) .cell2')
+          .text
+          .chomp
 
         return Picture.new(
           title,
