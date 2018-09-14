@@ -1,4 +1,3 @@
-require 'rest-client'
 require 'sinatra'
 
 require_relative 'gac'

@@ -1,12 +1,12 @@
-require 'nokogiri'
-require 'thread'
 require 'uri'
+
+require 'nokogiri'
+require 'rest-client'
+require 'rufus-scheduler'
 
 Picture = Struct.new(:title, :artist, :date, :image_url, :page_url)
 
 LOG = Logger.new(STDOUT)
-
-Thread.abort_on_exception = true
 
 module GACRandomPicture
   def self.fetch
@@ -77,17 +77,14 @@ end
 class GACPictureUpdater
   def initialize(gac_picture, sleep_time=60)
     @gac_picture = gac_picture
-    @sleep_time  = sleep_time
+    @sleep_time  = sleep_time.to_s + 's'
     self
   end
 
   def start
-    @thread = Thread.new do
-      loop do
-        sleep @sleep_time
-        @gac_picture.val = GACRandomPicture.fetch
-      end
-    end
+    Rufus::Scheduler
+      .singleton
+      .every(@sleep_time) { @gac_picture.val = GACRandomPicture.fetch }
     self
   end
 end

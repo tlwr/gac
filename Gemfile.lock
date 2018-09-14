@@ -3,6 +3,11 @@ GEM
   specs:
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    et-orbi (1.1.6)
+      tzinfo
+    fugit (1.1.6)
+      et-orbi (~> 1.1, >= 1.1.6)
+      raabro (~> 1.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     mime-types (3.1)
@@ -13,6 +18,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
+    raabro (1.1.6)
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
@@ -20,12 +26,17 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rufus-scheduler (3.5.2)
+      fugit (~> 1.1, >= 1.1.5)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
+    thread_safe (0.3.6)
     tilt (2.0.8)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -36,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   nokogiri
   rest-client
+  rufus-scheduler
   sinatra
 
 BUNDLED WITH
