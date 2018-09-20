@@ -12,7 +12,7 @@ module GACRandomPicture
   def self.fetch
     loop do
       id = Random.rand(30000)
-      url = "http://www.gac.culture.gov.uk/gacdb/search.php?mode=show&id=#{id}"
+      url = "https://www.gac.culture.gov.uk/gacdb/search.php?mode=show&id=#{id}"
 
       LOG.info "Trying: #{url}"
 
