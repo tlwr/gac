@@ -3,6 +3,8 @@ applications:
   - name: gac
     buildpack: ruby_buildpack
     memory:    64M
+    health-check-type: http
+    health-check-http-endpoint: /
     env:
       RACK_ENV: production
 ...
